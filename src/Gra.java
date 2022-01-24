@@ -7,8 +7,9 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-
-
+/**
+ * Klasa pozycji
+ */
 class Position {
     int x, y;
     Rectangle bounds;
@@ -32,6 +33,9 @@ class Position {
     }
 }
 
+/**
+ * Klasa główna gry - szczegółowe informacje o wymiarach okna, wprowadzenie nazw obrazków, wprowadzenie zmiennych.
+ */
 public class Gra extends JPanel implements Runnable, KeyListener {
     final int WIDTH = 520;
     final int HEIGHT = 450;
@@ -52,7 +56,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
     int ballX, ballY;
     int ball0x, ball0y;
 
-
+    /**
+     * Metoda startowa - wgranie obrazków do aplikacji, ustawienie pozycji bloków, ustawienie parametrów piłki
+     */
     public void start(){
         try{
             view = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -89,7 +95,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         }
 
     }
-
+    /**
+     * Metoda aktualizacja
+     */
     public void update(){
        ballX += ball0x;
        for(int i=0; i < n; i++){
@@ -139,7 +147,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         paddlePosition.setPosition(paddleX, paddleY);
 
     }
-
+    /**
+     * Metoda szkic - ustawienie w celu narysowania odpowiedniej planszy
+     */
     public void draw(){
         g.drawImage(background, 0 ,0,WIDTH, HEIGHT, null);
         g.drawImage(ball, ballX, ballY, ball.getWidth(),ball.getHeight(), null);
@@ -172,6 +182,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         addKeyListener(this);
     }
 
+    /**
+     * Wyświetlanie ramki
+     */
     @Override
     public void addNotify(){
         super.addNotify();
@@ -183,6 +196,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         }
     }
 
+    /**
+     * Klasa główna, JFrame
+     */
     public static void main(String[] args){
         JFrame w = new JFrame("Arkanoid");
         w.setResizable(false);
@@ -193,6 +209,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         w.setVisible(true);
     }
 
+    /**
+     * Klasa pozycji
+     */
     @Override
     public void run(){
         requestFocus();
@@ -213,6 +232,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
 
 }
 
+    /**
+     * Metoda nacisniecia klawiszy - użycie strzałek w prawo i lewo
+     */
 @Override
     public void keyPressed(KeyEvent e){
         switch(e.getKeyCode()){
@@ -225,6 +247,9 @@ public class Gra extends JPanel implements Runnable, KeyListener {
         }
     }
 
+    /**
+     * Metoda zwolnienia klawiszy strzałek w prawo i lewo
+     */
 @Override
     public void keyReleased(KeyEvent e){
         switch(e.getKeyCode()){
