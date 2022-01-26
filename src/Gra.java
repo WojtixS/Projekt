@@ -244,6 +244,7 @@ public class Gra extends JPanel implements Runnable, KeyListener {
             case KeyEvent.VK_LEFT:
             left=true;
             break;
+
         }
     }
 
